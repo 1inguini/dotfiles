@@ -1,0 +1,50 @@
+# # If not running interactively, don't do anything
+# case $- in
+#     *i*) exec fish;;
+#       *) return;;
+# esac
+
+# Requirement
+# - [fzf](https://github.com/junegunn/fzf)
+#
+#export ABDUCO_SESSION_NAME="session_$(date '+%X')"
+#export SESSIONS="$(abduco | tail -n +2)"
+#abduco -c "$ABDUCO_SESSION_NAME" "bash" && exit
+
+eval "$(opam config env)"
+
+export GTK_IM_MODULE=uim
+export XMODIFIERS=@im=uim
+export QT_IM_MODULE=uim
+# export LC_CTYPE="ja_JP.UTF-8"
+
+# export LANG="en-US.UTF-8"
+
+# export CC=clang
+# export CXX=clang++
+
+#export PATH="$PATH:$HOME/.gem/ruby/*/bin:$HOME/.opam/*/default/bin:$HOME/.local/bin:"
+
+export EDITOR="micro"
+
+export JHC_LIBRARY_PATH=/home/linguini/my-repo/working_copy/jhc-components
+
+export GOPATH=$HOME/go
+
+PATH="$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/env:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$(ruby -e 'print Gem.user_dir')/bin:$HOME/.nimble/bin:$GOPATH/bin:$HOME/.elan/bin"
+export PATH
+
+#set -x EDITOR emacsclient
+export EDITOR=micro
+
+alias rm='trash-put'
+
+alias date-iso='date --iso-8601'
+alias date-rfc='date --rfc-2822'
+
+alias remorphan='pikaur -Rs $(pikaur -Qqdt)'
+# alias remorphan='bb-wrapper -Rs (bb-wrapper -Qqdt)'
+
+export JHC_LIBRARY_PATH="$HOME/.local/lib/jhc:$HOME/my-repo/working_copy/jhc-components"
+
+export MANPATH="/home/linguini/.opam/ocaml-base-compiler.4.06.0/man:/usr/local/man:/usr/local/share/man:/usr/share/man:/home/linguini/.local/share/man:/home/linguini/.stack/programs/x86_64-linux/ghc-tinfo6-8.6.5/share/man:/home/linguini/.opam/ocaml-base-compiler.4.06.0/man"
