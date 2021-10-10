@@ -1,0 +1,24 @@
+[user]
+  email = 9647142@gmail.com
+  name = 1inguini
+
+[init]
+  defaultBranch = master
+
+[url "github:"]
+  InsteadOf = https://github.com/
+  InsteadOf = git@github.com:
+
+[credential]
+  helper = keepassxc
+
+[diff]
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+[mergetool "nvimdiff"]
+  cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
+
+[core]
+  ignorecase = false
+  quotepath = false

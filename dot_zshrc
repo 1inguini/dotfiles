@@ -35,26 +35,6 @@ zinit load 'zsh-users/zsh-history-substring-search'
 bindkey "${key[Up]}" history-substring-search-up
 bindkey "${key[Down]}" history-substring-search-down
 
-# abbreviation
-# https://girigiribauer.com/tech/20200420/
-my_globalias() {
-   zle _expand_alias
-   # zle expand-word
-   zle accept-line
-}
-zle -N my_globalias
-# hack Enter key
-bindkey -M emacs "^m" my_globalias
-bindkey -M viins "^m" my_globalias
-
-alias grep='rg'
-alias remorphan='paru -Rns $(paru -Qtdq)'
-alias cp='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1'
-alias mv='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files'
-alias rm='trash-put'
-alias date-uIs="date -u '+%Y-%m-%dT%H:%M:%SZ'"
-
-
 # prompt
 # remove grml-zsh-config's prompt
 prompt off
@@ -70,6 +50,26 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 ## 補完候補を一覧表示したとき、Tabや矢印で選択できるようにする
 zstyle ':completion:*:default' menu select=1
+
+
+# abbreviation
+# https://girigiribauer.com/tech/20200420/
+my_globalias() {
+   zle _expand_alias
+   # zle expand-word
+   zle accept-line
+}
+zle -N my_globalias
+# hack Enter key
+bindkey -M emacs "^m" my_globalias
+bindkey -M viins "^m" my_globalias
+
+# alias grep='rg'
+# alias remorphan='paru -Rns $(paru -Qtdq)'
+# alias cp='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1'
+# alias mv='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files'
+# alias rm='trash-put'
+# alias date-uIs="date -u '+%Y-%m-%dT%H:%M:%SZ'"
 
 
 # Finally, make sure the terminal is in application mode, when zle is

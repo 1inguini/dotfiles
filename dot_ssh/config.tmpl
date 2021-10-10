@@ -1,0 +1,10 @@
+Host github github.com
+  HostName github.com
+  IdentityFile ~/.ssh/github
+  User git
+
+Host the-first-ec2
+  HostName {{ (keepassxc "the-first-ec2").URL }}
+  User arch
+  Port 22
+  IdentityFile ~/.ssh/first-ec2.pem
