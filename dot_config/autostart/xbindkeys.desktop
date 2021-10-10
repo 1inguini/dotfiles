@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=xbindkeys
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=xbindkeys
+Name=xbindkeys
+Comment[en_US]=keybord macro
+Comment=keybord macro
