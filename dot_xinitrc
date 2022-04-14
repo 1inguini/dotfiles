@@ -57,7 +57,7 @@ kbdrate -d 400 -r 50
 xset r rate 400 50
 xset s 3600 3600
 
-xsetroot -cursor_name left_ptr
+xsetroot -cursor_name left_ptr &
 
 xhost +SI:localuser:$USER &
 

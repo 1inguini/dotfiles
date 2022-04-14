@@ -5,12 +5,11 @@
 [init]
   defaultBranch = master
 
-[url "github:"]
-  InsteadOf = https://github.com/
-  InsteadOf = git@github.com:
+[url "git@github:1inguini"]
+  InsteadOf = https://github.com/1inguini
 
-[credential]
-  helper = keepassxc
+# [credential]
+#   helper = keepassxc
 
 [diff]
   tool = nvimdiff

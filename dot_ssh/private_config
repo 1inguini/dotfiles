@@ -4,7 +4,7 @@ Host github github.com
   User git
 
 Host the-first-ec2
-  HostName {{ (keepassxc "the-first-ec2").URL }}
+  HostName ec2-52-199-157-81.ap-northeast-1.compute.amazonaws.com
   User arch
   Port 22
   IdentityFile ~/.ssh/first-ec2.pem
