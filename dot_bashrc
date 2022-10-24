@@ -1,3 +1,4 @@
+#!/bin/bash
 # # If not running interactively, don't do anything
 # case $- in
 #     *i*) exec fish;;
@@ -31,11 +32,15 @@ export JHC_LIBRARY_PATH=/home/linguini/my-repo/working_copy/jhc-components
 
 export GOPATH=$HOME/go
 
-PATH="$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/env:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$(ruby -e 'print Gem.user_dir')/bin:$HOME/.nimble/bin:$GOPATH/bin:$HOME/.elan/bin"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:$HOME/.local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$(ruby -e 'print Gem.user_dir')/bin:$HOME/.nimble/bin:$GOPATH/bin:$HOME/.elan/toolchains/leanprover--lean4---nightly/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools:$HOME/.ghcup/bin"
 export PATH
 
 #set -x EDITOR emacsclient
-export EDITOR=nvim
+if [[ $DISPLAY ]]; then
+  export EDITOR='code --wait'
+else
+  export EDITOR=nvim
+fi
 
 alias grep='rg'
 

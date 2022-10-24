@@ -105,10 +105,10 @@
   alt + Print
 
 # "dmenu_run -fn 'NotoSansMonoCJK-14' -l 30"
-"rofi -modi run -show run"
+"source ~/.bashrc && rofi -modi run -show run"
   Mod4 + r
 
-"rofi -modi drun -show drun"
+"source ~/.bashrc && rofi -modi drun -show drun"
   Mod4 + x
 
 # "alacritty"

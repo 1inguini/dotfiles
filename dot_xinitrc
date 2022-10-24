@@ -1,4 +1,4 @@
-# !/bin/sh
+#!/bin/sh
 #
 #
 # ~/.xinitrc
@@ -82,8 +82,8 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
-export LANG="ja_JP.UTF-8"
-export LC_CTYPE="ja_JP.UTF-8"
+export EDITOR='code --wait'
+
 # export QT_QPA_PLATFORMTHEME='gtk2'
 export QT_QPA_PLATFORMTHEME='qt5ct'
 # export QT_STYLE_OVERRID='kvantum'

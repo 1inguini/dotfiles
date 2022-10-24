@@ -8,6 +8,9 @@
 [url "git@github:1inguini"]
   InsteadOf = https://github.com/1inguini
 
+[url "repos@allspice:/srv/repos"]
+  InsteadOf = https://repos.1inguini.com
+
 # [credential]
 #   helper = keepassxc
 
@@ -20,4 +23,11 @@
 
 [core]
   ignorecase = false
-  quotepath = false
+  quotePath = false
+  autocrlf = false
+
+[color]
+  ui = true
+
+[pull]
+  ff = only
