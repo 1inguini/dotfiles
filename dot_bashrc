@@ -32,7 +32,7 @@ export JHC_LIBRARY_PATH=/home/linguini/my-repo/working_copy/jhc-components
 
 export GOPATH=$HOME/go
 
-PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:$HOME/.local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$(ruby -e 'print Gem.user_dir')/bin:$HOME/.nimble/bin:$GOPATH/bin:$HOME/.elan/toolchains/leanprover--lean4---nightly/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools:$HOME/.ghcup/bin"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:$HOME/.local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$(ruby -e 'print Gem.user_dir')/bin:$HOME/.nimble/bin:$GOPATH/bin:$HOME/.elan/toolchains/leanprover--lean4---nightly/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools:$HOME/.ghcup/bin:$HOME/.cabal/bin"
 export PATH
 
 #set -x EDITOR emacsclient

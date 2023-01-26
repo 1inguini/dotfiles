@@ -1,6 +1,7 @@
 [user]
   email = 9647142@gmail.com
   name = 1inguini
+  signingkey = 88DC586CE047AFB7E1A911F5D7936F9E41550065
 
 [init]
   defaultBranch = master
@@ -31,3 +32,9 @@
 
 [pull]
   ff = only
+
+[commit]
+  gpgsign = true
+
+[credential]
+  helper = /usr/lib/git-core/git-credential-libsecret
