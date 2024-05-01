@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+zmodload zsh/zprof
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+source '/usr/share/zsh-antidote/antidote.zsh'
+antidote load
+
+# load bash config
+source ~/.bashrc
+# 履歴ファイルに保存される履歴の件数
+export SAVEHIST=100000000
+# メモリに保存される履歴の件数
+export HISTSIZE=1000
+
+# p10k prompt
+if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
+  [[ ! -f ~/.p10k.d/gui.zsh ]] || source ~/.p10k.d/gui.zsh
+else
+  [[ ! -f ~/.p10k.d/cui.zsh ]] || source ~/.p10k.d/cui.zsh
+fi
+
+# history-substring-search
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
+
+# source <(carapace _carapace zsh)
+
+zprof
