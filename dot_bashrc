@@ -1,60 +1,21 @@
-#!/bin/bash
-# # If not running interactively, don't do anything
-# case $- in
-#     *i*) exec fish;;
-#       *) return;;
-# esac
-
-# Requirement
-# - [fzf](https://github.com/junegunn/fzf)
 #
-#export ABDUCO_SESSION_NAME="session_$(date '+%X')"
-#export SESSIONS="$(abduco | tail -n +2)"
-#abduco -c "$ABDUCO_SESSION_NAME" "bash" && exit
+# ~/.bashrc
+#
 
-eval "$(opam config env)"
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
-# export GTK_IM_MODULE=fcitx
-# export XMODIFIERS=@im=fcitx
-# export QT_IM_MODULE=fcitx
-# export LC_CTYPE="ja_JP.UTF-8"
+export LANG=en_US.UTF-8
 
-# export LANG="en-US.UTF-8"
-
-# export CC=clang
-# export CXX=clang++
-
-#export PATH="$PATH:$HOME/.gem/ruby/*/bin:$HOME/.opam/*/default/bin:$HOME/.local/bin:"
-
-export EDITOR="micro"
-
-export JHC_LIBRARY_PATH=/home/linguini/my-repo/working_copy/jhc-components
-
-export GOPATH=$HOME/go
-
-PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:$HOME/.local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$(ruby -e 'print Gem.user_dir')/bin:$HOME/.nimble/bin:$GOPATH/bin:$HOME/.elan/toolchains/leanprover--lean4---nightly/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools:$HOME/.ghcup/bin:$HOME/.cabal/bin"
-export PATH
-
-#set -x EDITOR emacsclient
-if [[ $DISPLAY ]]; then
-  export EDITOR='code --wait'
-else
-  export EDITOR=nvim
+EDITOR=nano
+if command -v nvim >/dev/null; then
+  EDITOR=nvim
+elif command -v vim >/dev/null; then
+  EDITOR=vim
 fi
+export EDITOR
 
-alias grep='rg'
-
-alias rm='print "use trash"'
-
+alias ls='eza -g'
+alias rm='print use trash instead'
 alias cpr='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1 --no-inc-recursive'
-
 alias mvr='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1 --no-inc-recursive --remove-source-files'
-
-alias date-iso='date --iso-8601'
-alias date-rfc='date --rfc-2822'
-
-alias remorphan='paru -Rs $(paru -Qqdt)'
-
-export JHC_LIBRARY_PATH="$HOME/.local/lib/jhc:$HOME/my-repo/working_copy/jhc-components"
-
-export MANPATH="/home/linguini/.opam/ocaml-base-compiler.4.06.0/man:/usr/local/man:/usr/local/share/man:/usr/share/man:/home/linguini/.local/share/man:/home/linguini/.stack/programs/x86_64-linux/ghc-tinfo6-8.6.5/share/man:/home/linguini/.opam/ocaml-base-compiler.4.06.0/man"
