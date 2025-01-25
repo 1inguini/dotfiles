@@ -1,0 +1,14 @@
+Host allspice allspice.local
+	HostName allspice.local
+	IdentityFile ~/.ssh/allspice
+	User admin
+
+Host drive.1inguini.com
+	HostName drive.1inguini.com
+	IdentityFile ~/.ssh/drive.1inguini.com
+	User 1inguini
+
+Host github.com
+	HostName github.com
+	IdentityFile ~/.ssh/github
+	User git
