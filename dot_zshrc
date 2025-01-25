@@ -49,5 +49,6 @@ bindkey '^[OB' history-substring-search-down
 
 # source <(carapace _carapace zsh)
 
-zprof >> ${XDG_CACHE_HOME:-$HOME/.cache}/zprof.$(date --iso-8601=seconds).log
+mkdir -p ${XDG_STATE_HOME:-$HOME/.local/state}/zprof/
+zprof >> ${XDG_STATE_HOME:-$HOME/.local/state}/zprof/zprof.$(date --iso-8601=seconds).log
 
