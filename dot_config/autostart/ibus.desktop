@@ -1,6 +1,0 @@
-[Desktop Entry]
-Exec=ibus-daemon -drx
-Name=ibus
-Type=Application
-Version=1.0
-X-LXQt-Need-Tray=true

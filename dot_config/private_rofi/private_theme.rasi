@@ -1,5 +1,0 @@
-@theme "Monokai"
-
-element-icon {
-    size: 24;
-}

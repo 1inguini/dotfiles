@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
-#
+
+zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -7,84 +9,45 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# install grml-zsh-config
-
 # load bash config
 source ~/.bashrc
 
-# zinit
+setopt extendedglob nomatch notify
+
 source "/usr/share/zinit/zinit.zsh"
 autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-
-# init oh-my-zsh
-zinit ice wait'0'; zinit snippet OMZL::git.zsh
-
-# make zsh fish-like
-zinit ice wait'0'; zinit load 'zsh-users/zsh-syntax-highlighting'
-zinit ice wait'0'; zinit load 'zsh-users/zsh-autosuggestions'
-zinit load 'zsh-users/zsh-history-substring-search'
-bindkey "${key[Up]}" history-substring-search-up
-bindkey "${key[Down]}" history-substring-search-down
-
-# prompt
-# remove grml-zsh-config's prompt
-prompt off
-zinit light romkatv/powerlevel10k
-
-# 補完
-zinit ice wait'0'; zinit load 'zsh-users/zsh-completions'
-autoload -U compinit && compinit
-zstyle ':completion:*' list-colors "${LS_COLORS}" # 補完候補のカラー表示
-
-## 補完で小文字でも大文字にマッチさせる
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-## 補完候補を一覧表示したとき、Tabや矢印で選択できるようにする
-zstyle ':completion:*:default' menu select=1
 
 
-# abbreviation
-# https://girigiribauer.com/tech/20200420/
-my_globalias() {
-   zle _expand_alias
-   # zle expand-word
-   zle accept-line
-}
-zle -N my_globalias
-# hack Enter key
-bindkey -M emacs "^m" my_globalias
-bindkey -M viins "^m" my_globalias
-
-# alias grep='rg'
-# alias remorphan='paru -Rns $(paru -Qtdq)'
-# alias cp='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1'
-# alias mv='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files'
-# alias rm='trash-put'
-# alias date-uIs="date -u '+%Y-%m-%dT%H:%M:%SZ'"
-
-
-# Finally, make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init () {
-        printf '%s' "${terminfo[smkx]}"
-    }
-    function zle-line-finish () {
-        printf '%s' "${terminfo[rmkx]}"
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
+# p10k prompt
+zinit ice lucid depth=1; zinit load romkatv/powerlevel10k
+if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
+  [[ ! -f ~/.p10k.d/gui.zsh ]] || source ~/.p10k.d/gui.zsh
+else
+  [[ ! -f ~/.p10k.d/cui.zsh ]] || source ~/.p10k.d/cui.zsh
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source <(kubectl completion zsh)
+zinit ice pick'editor/*'; zinit load belak/zsh-utils
+# emacs style bindings
+bindkey -e
+
+zinit ice pick'history/*'; zinit load belak/zsh-utils
+# 履歴ファイルに保存される履歴の件数
+export SAVEHIST=100000000
+# メモリに保存される履歴の件数
+export HISTSIZE=1000000
+
+zinit ice wait atload"zicompinit; zicdreplay" blockf
+zinit load zsh-users/zsh-completions
+
+# make zsh fish-like
+zinit ice wait atinit'zicompinit'; zinit load zsh-users/zsh-syntax-highlighting
+zinit ice wait; zinit load zsh-users/zsh-autosuggestions
+# history-substring-search
+zinit ice wait; zinit load zsh-users/zsh-history-substring-search
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
+
+# source <(carapace _carapace zsh)
+
+zprof >> ${XDG_CACHE_HOME:-$HOME/.cache}/zprof.$(date --iso-8601=seconds).log
+
