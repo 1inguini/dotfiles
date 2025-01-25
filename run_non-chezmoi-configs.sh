@@ -9,9 +9,5 @@ function GitUpdate () {
     || { cd "$2"; git pull; }
 }
 
-# nvim
-GitUpdate https://github.com/1inguini/init.vim.git "$XDG_CONFIG_HOME"/nvim
-
-# xmonad
-GitUpdate https://github.com/1inguini/.xmonad.git ~/.xmonad
-xmonad --recompile && xmonad --restart
+# # nvim
+# GitUpdate https://github.com/1inguini/init.vim.git "$XDG_CONFIG_HOME"/nvim
