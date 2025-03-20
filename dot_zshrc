@@ -12,42 +12,45 @@ fi
 # load bash config
 source ~/.bashrc
 
+# setopt extendedglob nomatch notify
 setopt extendedglob nomatch notify
 
 source "/usr/share/zinit/zinit.zsh"
 autoload -Uz _zinit
 
+# make zsh fish-like
+zinit ice notify wait atinit'zicompinit'; zinit load zsh-users/zsh-syntax-highlighting
+zinit ice notify; zinit load zsh-users/zsh-autosuggestions
+
+zinit ice notify pick'editor/*'; zinit load belak/zsh-utils
+# emacs style bindings
+bindkey -e
+
+zinit ice notify pick'history/*'; zinit load belak/zsh-utils
+# 履歴ファイルに保存される履歴の件数
+export SAVEHIST=100000000
+# メモリに保存される履歴の件数
+export HISTSIZE=1000000
+
+zinit ice notify wait atload"zicompinit; zicdreplay" blockf; zinit load zsh-users/zsh-completions
+
+# history-substring-search
+zinit ice notify wait; zinit load zsh-users/zsh-history-substring-search
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
+
+# if command -v pijul >/dev/null; then
+#  source <(pijul completion zsh)
+# fi
 
 # p10k prompt
-zinit ice lucid depth=1; zinit load romkatv/powerlevel10k
+zinit ice notify depth=1; zinit load romkatv/powerlevel10k
 if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
   [[ ! -f ~/.p10k.d/gui.zsh ]] || source ~/.p10k.d/gui.zsh
 else
   [[ ! -f ~/.p10k.d/cui.zsh ]] || source ~/.p10k.d/cui.zsh
 fi
 
-zinit ice pick'editor/*'; zinit load belak/zsh-utils
-# emacs style bindings
-bindkey -e
-
-zinit ice pick'history/*'; zinit load belak/zsh-utils
-# 履歴ファイルに保存される履歴の件数
-export SAVEHIST=100000000
-# メモリに保存される履歴の件数
-export HISTSIZE=1000000
-
-zinit ice wait atload"zicompinit; zicdreplay" blockf
-zinit load zsh-users/zsh-completions
-
-# make zsh fish-like
-zinit ice wait atinit'zicompinit'; zinit load zsh-users/zsh-syntax-highlighting
-zinit ice wait; zinit load zsh-users/zsh-autosuggestions
-# history-substring-search
-zinit ice wait; zinit load zsh-users/zsh-history-substring-search
-bindkey '^[OA' history-substring-search-up
-bindkey '^[OB' history-substring-search-down
-
-# source <(carapace _carapace zsh)
 
 mkdir -p ${XDG_STATE_HOME:-$HOME/.local/state}/zprof/
 zprof >> ${XDG_STATE_HOME:-$HOME/.local/state}/zprof/zprof.$(date --iso-8601=seconds).log

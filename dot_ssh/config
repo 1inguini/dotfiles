@@ -1,14 +1,18 @@
-Host allspice allspice.local
-	HostName allspice.local
+Host allspice.local
+	Port 2022
 	IdentityFile ~/.ssh/allspice
 	User admin
+	SetEnv TERM=xterm-256color
+
+Host laptop linguini-laptop-ryzen.local
+	HostName linguini-laptop-ryzen.local
+	IdentityFile ~/.ssh/linguini-laptop-ryzen
+	User linguini
 
 Host drive.1inguini.com
-	HostName drive.1inguini.com
 	IdentityFile ~/.ssh/drive.1inguini.com
 	User 1inguini
 
 Host github.com
-	HostName github.com
 	IdentityFile ~/.ssh/github
 	User git
