@@ -12,19 +12,14 @@ fi
 # load bash config
 source ~/.bashrc
 
-# setopt extendedglob nomatch notify
-setopt extendedglob nomatch notify
-
 source "/usr/share/zinit/zinit.zsh"
 autoload -Uz _zinit
 
 # make zsh fish-like
-zinit ice notify wait atinit'zicompinit'; zinit load zsh-users/zsh-syntax-highlighting
+zinit ice notify wait; zinit load zsh-users/zsh-syntax-highlighting
 zinit ice notify; zinit load zsh-users/zsh-autosuggestions
 
 zinit ice notify pick'editor/*'; zinit load belak/zsh-utils
-# emacs style bindings
-bindkey -e
 
 zinit ice notify pick'history/*'; zinit load belak/zsh-utils
 # 履歴ファイルに保存される履歴の件数
@@ -32,12 +27,10 @@ export SAVEHIST=100000000
 # メモリに保存される履歴の件数
 export HISTSIZE=1000000
 
-zinit ice notify wait atload"zicompinit; zicdreplay" blockf; zinit load zsh-users/zsh-completions
-
 # history-substring-search
 zinit ice notify wait; zinit load zsh-users/zsh-history-substring-search
-bindkey '^[OA' history-substring-search-up
-bindkey '^[OB' history-substring-search-down
+
+zinit ice notify wait atload'zicompinit; zicdreplay'; zinit load zsh-users/zsh-completions
 
 # if command -v pijul >/dev/null; then
 #  source <(pijul completion zsh)
@@ -51,7 +44,40 @@ else
   [[ ! -f ~/.p10k.d/cui.zsh ]] || source ~/.p10k.d/cui.zsh
 fi
 
+# Options
+# https://zsh.sourceforge.io/Doc/Release/Options.html
 
+setopt extendedglob
+setopt nobeep
+
+# Allow comments even in interactive shells.
+setopt interactive_comments
+
+# Append a trailing ‘/’ to all directory names resulting from filename generation (globbing).
+setopt mark_dirs
+
+# When the current word has a glob pattern, do not insert all the words resulting from the expansion but generate matches as for completion and cycle through them like MENU_COMPLETE. The matches are generated as if a ‘*’ was added to the end of the word, or inserted at the cursor when COMPLETE_IN_WORD is set. This actually uses pattern matching, not globbing, so it works not only for files but for any completion, such as options, user names, etc.
+# Note that when the pattern matcher is used, matching control (for example, case-insensitive or anchored matching) cannot be used. This limitation only applies when the current word contains a pattern; simply turning on the GLOB_COMPLETE option does not have this effect.
+setopt glob_complete
+
+# If a parameter name was completed and a following character (normally a space) automatically inserted, and the next character typed is one of those that have to come directly after the name (like ‘}’, ‘:’, etc.), the automatically added character is deleted, so that the character typed comes immediately after the parameter name. Completion in a brace expansion is affected similarly: the added character is a ‘,’, which will be removed if ‘}’ is typed next.
+setopt auto_param_keys
+
+# If a parameter is completed whose content is the name of a directory, then add a trailing slash instead of a space.
+setopt auto_param_slash
+
+# emacsベースの新しいキーマップ
+bindkey -N modified emacs
+bindkey -A modified main
+
+# # 変数とかglobを展開しない
+bindkey "^I" complete-word
+
+# history-substring-search
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
+
+# profiling
 mkdir -p ${XDG_STATE_HOME:-$HOME/.local/state}/zprof/
 zprof >> ${XDG_STATE_HOME:-$HOME/.local/state}/zprof/zprof.$(date --iso-8601=seconds).log
 
