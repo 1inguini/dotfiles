@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 
 source "$HOME/.bashrc"
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -10,9 +9,31 @@ if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# antidote
-source "$XDG_CACHE_HOME/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-mattmc3-SLASH-antidote/antidote.zsh"
-antidote load
+# Download Znap, if it's not there yet.
+[[ -r "$XDG_DATA_HOME/znap/znap/znap.zsh" ]] ||
+    git clone --depth=1 https://github.com/marlonrichert/zsh-snap.git "$XDG_DATA_HOME/znap/znap"
+source "$XDG_DATA_HOME/znap/znap/znap.zsh"  # Start Znap
+
+
+# Prompt
+znap source romkatv/powerlevel10k
+
+# Completions
+znap install zsh-users/zsh-completions
+
+# Keybindings
+znap source belak/zsh-utils editor
+
+# History
+znap source belak/zsh-utils history
+
+# Utilities
+znap source belak/zsh-utils utility
+
+# Other Fish-like features
+znap source zdharma-continuum/fast-syntax-highlighting  # Syntax highlighting
+znap source zsh-users/zsh-autosuggestions               # Auto-suggestions
+znap source zsh-users/zsh-history-substring-search      # Up/Down to search history
 
 if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
   [[ ! -f ~/.p10k.d/gui.zsh ]] || source ~/.p10k.d/gui.zsh

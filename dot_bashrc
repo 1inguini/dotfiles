@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 export LANG=en_US.UTF-8
-export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$HOME/.local/share/coursier/bin"
 
 EDITOR=nano
 if command -v nvim >/dev/null; then
@@ -16,8 +16,13 @@ elif command -v vim >/dev/null; then
 fi
 export EDITOR
 
+: "${XDG_CACHE_HOME:=$HOME/.cache}"
+export XDG_CACHE_HOME
+: "${XDG_DATA_HOME:=$HOME/.local/share}"
+export XDG_DATA_HOME
+
 alias sudo='sudo '
-alias ls='eza -g'
+alias ls='eza --time-style=long-iso -g'
 alias rm='print use trash instead'
 alias cpr='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1 --no-inc-recursive'
 alias mvr='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1 --no-inc-recursive --remove-source-files'
