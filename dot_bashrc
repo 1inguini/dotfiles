@@ -7,7 +7,9 @@
 
 set -a # export all variables
 # systemd-environment-d-generator
-. "${XDG_CONFIG_HOME:-$HOME/.config}"/environment.d/*.conf
+for i in "${XDG_CONFIG_HOME:-$HOME/.config}"/environment.d/*.conf; do
+  . "$i"
+done
 
 LANG=en_US.UTF-8
 
