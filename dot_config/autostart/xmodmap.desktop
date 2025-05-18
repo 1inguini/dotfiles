@@ -1,5 +1,0 @@
-[Desktop Entry]
-Exec=xmodmap ~/.Xmodmap
-Name=xmodmap
-Type=Application
-Version=1.0

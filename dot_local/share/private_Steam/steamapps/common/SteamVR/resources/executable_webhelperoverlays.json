@@ -1,0 +1,101 @@
+{
+	"notificationtoast": {
+		"url": "/dashboard/notificationtoast.html",
+		"overlay_key": "system.toast",
+		"type": "overlay",
+		"create_from_mailbox": [ "toast_renderer/main" ],
+		"pixel_size": [ 524, 156 ]
+	},
+	"messageoverlay": {
+		"url": "/dashboard/messageoverlay.html",
+		"overlay_key": "system.messageoverlay",
+		"create_from_mailbox": [ "message_overlay/main" ],
+		"type": "dashboard",
+		"pixel_size": [ 1024, 600 ]
+	},
+	"controllerbinding": {
+		"url": "/dashboard/controllerbinding.html",
+		"type": "dashboard",
+		"create_from_mailbox": [ "bindingui/Overlay" ],
+		"pixel_size": [ 1920, 1080 ]
+	},
+	"controllerbinding_desktop": {
+		"url": "/dashboard/controllerbinding.html",
+		"parameters": {
+			"desktop": true
+		},
+		"type": "window",
+		"resizable": true,
+		"preload_setting":  [ "steamvr", "debugInputBinding" ],
+		"create_from_mailbox": [ "bindingui/Desktop" ],
+		"persist_layout": true,
+		"persist_visibility": true,
+		"pixel_size": [ 1920, 1080 ]
+	},
+	"managetrackers_desktop": {
+		"url": "/dashboard/controllerbinding.html",
+		"parameters": {
+			"desktop": true,
+			"tracker_edit": true
+		},
+		"type": "window",
+		"resizable": true,
+		"persist_layout": true,
+		"persist_visibility": true,
+		"pixel_size": [ 1920, 1080 ]
+	},
+    "settings_desktop": {
+        "url": "/dashboard/settings_desktop.html",
+		"parameters": {
+			"desktop": true
+		},
+        "persist_layout": true,
+        "persist_visibility": true,
+        "valid_without_hmd": true,
+        "preload": false,
+        "resizable": false,
+        "type": "window",
+        "pixel_size": [ 800, 600 ]
+    },
+	"fallback": {
+		"url": "/dashboard/fallback.html",
+		"type": "overlay",
+		"pixel_size": [ 1024, 2048 ],
+		"setting": [ "driver_lighthouse", "enableImuFallback" ]
+	},
+	"systemui": {
+		"url": "/dashboard/systemui.html",
+		"overlay_key": "system.systemui",
+		"type": "overlay",
+		"pixel_size": [ 2048, 3072 ]
+	},
+	"bindingcallouts": {
+		"url": "/dashboard/bindingcallouts.html",
+		"type": "overlay",
+		"create_from_mailbox":  [ "binding_callouts/main" ],
+		"pixel_size": [ 2048, 2048 ]
+	},
+	"scenegraphtest": {
+		"url": "/dashboard/scenegraphtest.html",
+		"type": "overlay",
+		"pixel_size": [ 1920, 1080 ],
+		"setting": [ "dashboard", "sceneGraphTest" ]
+	},
+	"keyboard": {
+		"url": "/dashboard/keyboard.html",
+		"overlay_key": "system.keyboard",
+		"type": "overlay",
+		"pixel_size": [ 1920, 1080 ]
+	},
+	"debugcommands_desktop": {
+		"url": "/dashboard/debugcommands.html",
+		"parameters": {
+			"desktop": true
+		},
+		"type": "window",
+		"resizable": true,
+		"persist_layout": true,
+		"persist_visibility": true,
+		"pixel_size": [ 600, 800 ]
+	}
+}

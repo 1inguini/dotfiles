@@ -1,40 +1,18 @@
 [user]
   email = 9647142@gmail.com
   name = 1inguini
-  signingkey = 88DC586CE047AFB7E1A911F5D7936F9E41550065
 
 [init]
-  defaultBranch = master
+  defaultBranch = main
 
-[url "git@github:1inguini"]
-  InsteadOf = https://github.com/1inguini
-
-[url "repos@allspice:/srv/repos"]
-  InsteadOf = https://repos.1inguini.com
-
-# [credential]
-#   helper = keepassxc
-
-[diff]
-  tool = nvimdiff
-[difftool "nvimdiff"]
-  cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
-[mergetool "nvimdiff"]
-  cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
-
-[core]
-  ignorecase = false
-  quotePath = false
-  autocrlf = false
+[url "git@github.com:"]
+  InsteadOf = https://github.com/
 
 [color]
   ui = true
 
 [pull]
   ff = only
-
-[commit]
-  gpgsign = true
 
 [credential]
   helper = /usr/lib/git-core/git-credential-libsecret
