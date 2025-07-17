@@ -1,24 +1,29 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
 switch-to-activity-cadbf7e6-874e-46f9-86c3-ae0bc2f7c991=none,none,Switch to activity "Default"
-switch-to-activity-ed4a75e8-bb63-4427-99bb-236f8e3b81b2=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to 日本語 (OADG 109A)=none,none,キーボードレイアウト 日本語 (OADG 109A) に切り替え
-Switch keyboard layout to 英語 (US)=none,none,キーボードレイアウト 英語 (US) に切り替え
 Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,最後に使用したキーボードレイアウトに切り替え
 Switch to Next Keyboard Layout=Meta+Alt+K,Meta+Alt+K,次のキーボードレイアウトに切り替え
 _k_friendly_name=キーボードレイアウトの切り替え
 
+[juk]
+_k_friendly_name=JuK
+back=Ctrl+Alt+Left,Ctrl+Alt+Left,前のトラック(V)
+forward=Ctrl+Alt+Right,Ctrl+Alt+Right,次のトラック(N)
+forwardAlbum=Ctrl+Alt+Up,Ctrl+Alt+Up,次のアルバムを再生(Y)
+mute=Ctrl+Alt+M,Ctrl+Alt+M,ミュート
+playPause=Ctrl+Alt+P,Ctrl+Alt+P,再生/一時停止
+seekBack=Ctrl+Alt+Shift+Left,Ctrl+Alt+Shift+Left,後方シーク
+seekForward=Ctrl+Alt+Shift+Right,Ctrl+Alt+Shift+Right,前方シーク
+stop=Ctrl+Alt+S,Ctrl+Alt+S,停止(S)
+volumeDown=Ctrl+Alt+Shift+Down,Ctrl+Alt+Shift+Down,音量を下げる
+volumeUp=Ctrl+Alt+Shift+Up,Ctrl+Alt+Shift+Up,音量を上げる
+
 [kaccess]
 Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,Toggle Screen Reader On and Off
 _k_friendly_name=Accessibility
-
-[kcm_touchpad]
-Disable Touchpad=Touchpad Off,Touchpad Off,
-Enable Touchpad=Touchpad On,Touchpad On,
-Toggle Touchpad=Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku,Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku,
-_k_friendly_name=Touchpad
 
 [kmix]
 _k_friendly_name=オーディオの音量
@@ -48,10 +53,26 @@ Cycle Overview=none,none,Cycle through Overview and Grid View
 Cycle Overview Opposite=none,none,Cycle through Grid View and Overview
 Decrease Opacity=none,,Decrease Opacity of Active Window by 5%
 Edit Tiles=Meta+T,Meta+T,Toggle Tiles Editor
-Expose=,Ctrl+F9,Toggle Present Windows (Current desktop)
-ExposeAll=\tLaunch (C),Ctrl+F10\tLaunch (C),Toggle Present Windows (All desktops)
-ExposeClass=,Ctrl+F7,Toggle Present Windows (Window class)
+Expose=none,Ctrl+F9,Toggle Present Windows (Current desktop)
+ExposeAll=Launch (C),Ctrl+F10\tLaunch (C),Toggle Present Windows (All desktops)
+ExposeClass=none,Ctrl+F7,Toggle Present Windows (Window class)
 ExposeClassCurrentDesktop=none,none,Toggle Present Windows (Window class on current desktop)
+Grid Tiling: Close Desktop=none,none,Grid Tiling: Close Desktop
+Grid Tiling: Decrease Size=none,none,Grid Tiling: Decrease Size
+Grid Tiling: Increase Size=none,none,Grid Tiling: Increase Size
+Grid Tiling: Maximize Size=none,none,Grid Tiling: Maximize Size
+Grid Tiling: Minimize Size=Meta+_,none,Grid Tiling: Minimize Size
+Grid Tiling: Move Down=none,none,Grid Tiling: Move Down
+Grid Tiling: Move Left=none,none,Grid Tiling: Move Left
+Grid Tiling: Move Right=none,none,Grid Tiling: Move Right
+Grid Tiling: Move Up=none,none,Grid Tiling: Move Up
+Grid Tiling: Refresh=none,none,Grid Tiling: Refresh
+Grid Tiling: Reset=none,none,Grid Tiling: Reset
+Grid Tiling: Tile/Float=none,none,Grid Tiling: Tile/Float
+Grid Tiling: Toggle Border=none,none,Grid Tiling: Toggle Border
+Grid Tiling: Toggle Gap=none,none,Grid Tiling: Toggle Gap
+Grid Tiling: Toggle Minimize Desktop=Meta+M,none,Grid Tiling: Toggle Minimize Desktop
+Grid Tiling: Toggle Tile=Meta+Shift+T,none,Grid Tiling: Toggle Tile
 Grid View=Meta+G,Meta+G,Toggle Grid View
 Increase Opacity=none,,Increase Opacity of Active Window by 5%
 Kill Window=Meta+Ctrl+Esc,Meta+Ctrl+Esc,ウィンドウを強制終了
@@ -65,6 +86,7 @@ MoveZoomUp=none,none,Move Zoomed Area Upwards
 Overview=Meta+W,Meta+W,Toggle Overview
 Setup Window Shortcut=none,,ウィンドウショートカットの設定
 Show Desktop=Meta+D,Meta+D,Peek at Desktop
+Suspend Compositing=Alt+Shift+F12,Alt+Shift+F12,Suspend Compositing
 Switch One Desktop Down=Meta+Ctrl+Down,Meta+Ctrl+Down,一つ下のデスクトップに切り替え
 Switch One Desktop Up=Meta+Ctrl+Up,Meta+Ctrl+Up,一つ上のデスクトップに切り替え
 Switch One Desktop to the Left=Meta+Ctrl+Left,Meta+Ctrl+Left,一つ左のデスクトップに切り替え
@@ -111,17 +133,21 @@ Switch to Screen to the Left=none,,Switch to Screen to the Left
 Switch to Screen to the Right=none,,Switch to Screen to the Right
 Toggle Night Color=none,none,Suspend/Resume Night Light
 Toggle Window Raise/Lower=none,,ウィンドウを前面/背面に
-Walk Through Windows=Alt+Tab,Alt+Tab,ウィンドウを巡回
-Walk Through Windows (Reverse)=Alt+Shift+Tab,Alt+Shift+Tab,ウィンドウを巡回 (反対回り)
-Walk Through Windows Alternative=Meta+Right,,ウィンドウを巡回の代替
-Walk Through Windows Alternative (Reverse)=Meta+Left,,ウィンドウを巡回 (反対回り) の代替
-Walk Through Windows of Current Application=Alt+`,Alt+`,Walk Through Windows of Current Application
-Walk Through Windows of Current Application (Reverse)=Alt+~,Alt+~,Walk Through Windows of Current Application (Reverse)
-Walk Through Windows of Current Application Alternative=,,Walk Through Windows of Current Application Alternative
-Walk Through Windows of Current Application Alternative (Reverse)=,,Walk Through Windows of Current Application Alternative (Reverse)
+Walk Through Windows=Alt+Tab,Meta+Tab\tAlt+Tab,ウィンドウを巡回
+Walk Through Windows (Reverse)=Alt+Shift+Tab,Meta+Shift+Tab\tAlt+Shift+Tab,ウィンドウを巡回 (反対回り)
+Walk Through Windows Alternative=Meta+Right,none,ウィンドウを巡回の代替
+Walk Through Windows Alternative (Reverse)=Meta+Left,none,ウィンドウを巡回 (反対回り) の代替
+Walk Through Windows of Current Application=none,Meta+`\tAlt+`,Walk Through Windows of Current Application
+Walk Through Windows of Current Application (Reverse)=Alt+~,Meta+~\tAlt+~,Walk Through Windows of Current Application (Reverse)
+Walk Through Windows of Current Application Alternative=none,none,Walk Through Windows of Current Application Alternative
+Walk Through Windows of Current Application Alternative (Reverse)=none,none,Walk Through Windows of Current Application Alternative (Reverse)
 Window Above Other Windows=none,,ウィンドウを常に最前面に表示
 Window Below Other Windows=none,,ウィンドウを常に最背面に表示
 Window Close=Alt+F4,Alt+F4,ウィンドウを閉じる
+Window Custom Quick Tile Bottom=none,,Custom Quick Tile Window to the Bottom
+Window Custom Quick Tile Left=none,,Custom Quick Tile Window to the Left
+Window Custom Quick Tile Right=none,,Custom Quick Tile Window to the Right
+Window Custom Quick Tile Top=none,,Custom Quick Tile Window to the Top
 Window Fullscreen=none,,ウィンドウをフルスクリーンに
 Window Grow Horizontal=none,,Expand Window Horizontally
 Window Grow Vertical=none,,Expand Window Vertically
@@ -192,8 +218,9 @@ Window to Screen 4=none,,Move Window to Screen 4
 Window to Screen 5=none,,Move Window to Screen 5
 Window to Screen 6=none,,Move Window to Screen 6
 Window to Screen 7=none,,Move Window to Screen 7
-_k_friendly_name=KDE システム設定
-view_actual_size=Meta+0,Meta+0,実際のサイズに拡大(A)
+_k_friendly_name=KWin
+disableInputCapture=Meta+Shift+Esc,Meta+Shift+Esc,Disable Active Input Capture
+view_actual_size=Meta+0,Meta+0,実際のサイズにズーム(A)
 view_zoom_in=Meta++\tMeta+=,Meta++\tMeta+=,拡大(I)
 view_zoom_out=Meta+-,Meta+-,縮小(O)
 
@@ -219,7 +246,7 @@ Increase Screen Brightness Small=Shift+Monitor Brightness Up,Shift+Monitor Brigh
 PowerDown=Power Down,Power Down,強制的に電源を切る
 PowerOff=Power Off,Power Off,電源を切る
 Sleep=Sleep,Sleep,サスペンド
-Toggle Keyboard Backlight=Keyboard Light On/Off,Keyboard Light On/Off,キーボードのバックライトを切り替える
+Toggle Keyboard Backlight=Keyboard Light On/Off,Keyboard Light On/Off,キーボードのバックライトをオン/オフ
 Turn Off Screen=none,none,スクリーンの電源を切る
 _k_friendly_name=電源管理
 powerProfile=Battery\tMeta+B,Battery\tMeta+B,電源プロファイルを切り替え
@@ -228,7 +255,7 @@ powerProfile=Battery\tMeta+B,Battery\tMeta+B,電源プロファイルを切り�
 _k_friendly_name=plasmashell
 activate application launcher=Meta\tAlt+F1,Meta\tAlt+F1,アプリケーションランチャーをアクティブ化
 activate task manager entry 1=Meta+1,Meta+1,タスクマネージャのエントリ 1 をアクティベート
-activate task manager entry 10=none,Meta+0,タスクマネージャのエントリ 10 をアクティベート
+activate task manager entry 10=none,,タスクマネージャのエントリ 10 をアクティベート
 activate task manager entry 2=Meta+2,Meta+2,タスクマネージャのエントリ 2 をアクティベート
 activate task manager entry 3=Meta+3,Meta+3,タスクマネージャのエントリ 3 をアクティベート
 activate task manager entry 4=Meta+4,Meta+4,タスクマネージャのエントリ 4 をアクティベート
@@ -242,10 +269,11 @@ clipboard_action=Meta+Ctrl+X,Meta+Ctrl+X,Automatic Action Popup Menu
 cycle-panels=Meta+Alt+P,Meta+Alt+P,キーボードフォーカスをパネル間で移動
 cycleNextAction=none,,Next History Item
 cyclePrevAction=none,,Previous History Item
+edit_clipboard=none,,Edit Contents…
 manage activities=Meta+Q,Meta+Q,アクティビティスイッチャーを表示
-next activity=Meta+A,none,アクティビティ間を移動
-previous activity=Meta+Shift+A,none,アクティビティ間を移動 (反転)
-repeat_action=Meta+Ctrl+R,Meta+Ctrl+R,Manually Invoke Action on Current Clipboard
+next activity=Meta+A\tMeta+Tab,none,アクティビティ間を移動
+previous activity=Meta+Shift+Tab\tMeta+Shift+A,none,アクティビティ間を移動 (反転)
+repeat_action=none,,Manually Invoke Action on Current Clipboard
 show dashboard=Ctrl+F12,Ctrl+F12,デスクトップを表示
 show-barcode=none,,Show Barcode…
 show-on-mouse-pos=Meta+V,Meta+V,Show Clipboard Items at Mouse Position
@@ -254,5 +282,16 @@ switch to next activity=none,,次のアクティビティに切り替え
 switch to previous activity=none,,前のアクティビティに切り替え
 toggle do not disturb=none,,マナーモードをオン/オフ
 
-[services][org.kde.spectacle.desktop]
-RecordWindow=none
+[services][org.kde.touchpadshortcuts.desktop]
+ToggleTouchpad=Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku
+
+[wacomtablet]
+Map to fullscreen=Meta+Ctrl+F,Meta+Ctrl+F,Map to fullscreen
+Map to screen 1=Meta+Ctrl+1,Meta+Ctrl+1,スクリーン 1 にマップ
+Map to screen 2=Meta+Ctrl+2,Meta+Ctrl+2,スクリーン 2 にマップ
+Next Profile=Meta+Ctrl+N,Meta+Ctrl+N,次のプロファイル
+Previous Profile=Meta+Ctrl+P,Meta+Ctrl+P,Previous Profile
+Toggle screen map selection=Meta+Ctrl+M,Meta+Ctrl+M,Toggle between all screens
+Toggle stylus mode=Meta+Ctrl+S,Meta+Ctrl+S,Toggle the Stylus Tool Relative/Absolute
+Toggle touch tool=Meta+Ctrl+T,Meta+Ctrl+T,タッチツールの有効化/無効化
+_k_friendly_name=Wacom Tablet
