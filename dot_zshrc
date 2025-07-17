@@ -44,6 +44,8 @@ fi
 export SAVEHIST=100000000
 # メモリに保存される履歴の件数
 export HISTSIZE=1000000
+# 履歴に即座に記録(読み込みはしない、`fc -R`で読み込み)
+setopt inc_append_history
 
 # Options
 # https://zsh.sourceforge.io/Doc/Release/Options.html
