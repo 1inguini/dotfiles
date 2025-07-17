@@ -1,0 +1,11 @@
+[[language]]
+name = "javascript"
+[language.formatter]
+command = "biome"
+args = ["format", "--indent-style=space", "--stdin-file-path=index.js"]
+
+[[language]]
+name = "toml"
+[language.formatter]
+command = "taplo"
+args = ["format", "-"]

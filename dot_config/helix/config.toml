@@ -1,0 +1,25 @@
+theme = "onedark"
+
+[keys.normal]
+C-s = ":write"
+
+[editor]
+rulers = [80, 100]
+color-modes = true
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+max-depth = 2
+
+[editor.indent-guides]
+render = true
+character = "┊" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.soft-wrap]
+enable = true
