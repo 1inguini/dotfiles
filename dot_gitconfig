@@ -5,14 +5,29 @@
 [init]
   defaultBranch = main
 
-[url "git@github.com:"]
-  InsteadOf = https://github.com/
+# [url "git@github.com:"]
+#   InsteadOf = https://github.com/
 
 [color]
   ui = true
 
-[pull]
-  ff = only
+[commit]
+  gpgsign = true
 
 [credential]
-  helper = /usr/lib/git-core/git-credential-libsecret
+#  helper = /usr/lib/git-core/git-credential-libsecret
+  helper = libsecret
+[maintenance]
+	repo = /home/hokaceri/.local/share/chezmoi
+	repo = /home/hokaceri/.local/share/znap/znap
+	repo = /home/hokaceri/.local/share/znap/belak/zsh-utils
+	repo = /home/hokaceri/.local/share/znap/romkatv/powerlevel10k
+	repo = /home/hokaceri/.local/share/znap/zdharma-continuum/fast-syntax-highlighting
+	repo = /home/hokaceri/.local/share/znap/zsh-users/zsh-autosuggestions
+	repo = /home/hokaceri/.local/share/znap/zsh-users/zsh-completions
+	repo = /home/hokaceri/.local/share/znap/zsh-users/zsh-history-substring-search
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
