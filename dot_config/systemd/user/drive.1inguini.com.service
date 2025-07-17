@@ -4,4 +4,4 @@
 ExecStart=/usr/bin/sshfs -f -v -o _netdev,reconnect,dir_cache=yes,workaround=rename,idmap=user,max_conns=64,allow_root,auto_unmount drive.1inguini.com: %h/drive.1inguini.com/
 
 [Install]
-WantedBy=default.target
+WantedBy=basic.target
