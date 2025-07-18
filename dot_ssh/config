@@ -20,6 +20,11 @@ Host drive.1inguini.com
 	IdentityFile ~/.ssh/drive.1inguini.com
 	User 1inguini
 
+Host nagoya-u.ac.jp
+	HostName ssh.ice.nuie.nagoya-u.ac.jp
+	IdentityFile ~/.ssh/nagoya-u
+	User mj5533120
+
 Host github.com
 	IdentityFile ~/.ssh/github
 	User git
