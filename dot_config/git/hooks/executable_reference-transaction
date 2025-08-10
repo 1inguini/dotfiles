@@ -1,0 +1,35 @@
+#!/bin/sh
+set -e
+IFS='
+'
+. git-sh-setup
+SHARED_GIT_DIR=$XDG_DATA_HOME/git
+
+prepared() {
+    return
+}
+
+commited() {
+    while { IFS=' '; read -r _ new ref; } do
+        refname=$(printf '%s\n' "$ref" | cut -d/ -f2-)
+        namespace=refs/namespaces/$(basename "$(git rev-parse --show-toplevel)" .git | tr '[:blank:]' _)
+        if { echo "$new" | grep '^ref:'; } then
+            git --git-dir="$SHARED_GIT_DIR" symbolic-ref "$namespace/$refname" "$namespace/$(echo "$new" | cut -c"$(echo ref:refs/ | wc --chars)"-)"
+        else
+            git --git-dir="$SHARED_GIT_DIR" update-ref "$namespace/$refname" "$new"
+        fi
+    done
+    return
+}
+
+
+aborted() {
+    return
+}
+
+case "$1" in
+    prepared) prepared;;
+    committed) committed;;
+    aborted) aborted;;
+esac
+

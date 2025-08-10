@@ -1,22 +1,20 @@
 [user]
-  email = 9647142@gmail.com
-  name = 1inguini
+	email = 9647142@gmail.com
+	name = 1inguini
 
 [init]
-  defaultBranch = main
+	defaultBranch = main
+	templateDir = /home/hokaceri/.config/git/templates
 
 # [url "git@github.com:"]
-#   InsteadOf = https://github.com/
-
-[color]
-  ui = true
+#	InsteadOf = https://github.com/
 
 [commit]
-  gpgsign = true
+	gpgsign = true
 
 [credential]
-#  helper = /usr/lib/git-core/git-credential-libsecret
-  helper = libsecret
+#	helper = /usr/lib/git-core/git-credential-libsecret
+	helper = libsecret
 [maintenance]
 	repo = /home/hokaceri/.local/share/chezmoi
 	repo = /home/hokaceri/.local/share/znap/znap
@@ -31,3 +29,9 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[protocol "file"]
+	allow = always
+[clone]
+	filterSubmodules = true
+[core]
+	hooksPath = /home/hokaceri/.config/git/hooks
