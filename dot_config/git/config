@@ -4,7 +4,7 @@
 
 [init]
 	defaultBranch = main
-	templateDir = /home/hokaceri/.config/git/templates
+	# templateDir = /home/hokaceri/.config/git/templates
 
 # [url "git@github.com:"]
 #	InsteadOf = https://github.com/
@@ -15,15 +15,6 @@
 [credential]
 #	helper = /usr/lib/git-core/git-credential-libsecret
 	helper = libsecret
-[maintenance]
-	repo = /home/hokaceri/.local/share/chezmoi
-	repo = /home/hokaceri/.local/share/znap/znap
-	repo = /home/hokaceri/.local/share/znap/belak/zsh-utils
-	repo = /home/hokaceri/.local/share/znap/romkatv/powerlevel10k
-	repo = /home/hokaceri/.local/share/znap/zdharma-continuum/fast-syntax-highlighting
-	repo = /home/hokaceri/.local/share/znap/zsh-users/zsh-autosuggestions
-	repo = /home/hokaceri/.local/share/znap/zsh-users/zsh-completions
-	repo = /home/hokaceri/.local/share/znap/zsh-users/zsh-history-substring-search
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
@@ -34,4 +25,4 @@
 [clone]
 	filterSubmodules = true
 [core]
-	hooksPath = /home/hokaceri/.config/git/hooks
+	# hooksPath = /home/hokaceri/.config/git/hooks
