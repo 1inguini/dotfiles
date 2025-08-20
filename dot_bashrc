@@ -18,10 +18,10 @@ if command -v helix >/dev/null; then
   alias hx='helix '
 elif command -v nvim >/dev/null; then
   EDITOR=nvim
-  alias vat='nvim -R '
+  alias vat='nvim -R'
 elif command -v vim >/dev/null; then
   EDITOR=vim
-  alias vat='vim -R '
+  alias vat='vim -R'
 fi
 set +a
 
@@ -29,6 +29,7 @@ set +a
 alias sudo='sudo '
 alias ls='eza --time-style=long-iso -g -T -L1'
 alias rm='echo use trash instead'
+alias gm='gio trash'
 
 alias cpr='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1 --no-inc-recursive'
 alias mvr='rsync --archive --acls --xattrs -hh --partial --info=stats1,progress2 --modify-window=1 --no-inc-recursive --remove-source-files'

@@ -5,20 +5,21 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  . "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
 
 # Download Znap, if it's not there yet.
 [[ -r "$XDG_DATA_HOME/znap/znap/znap.zsh" ]] ||
-  git clone --depth=1 https://github.com/marlonrichert/zsh-snap.git "$XDG_DATA_HOME/znap/znap"
+  git clone --filter=blob:none https://github.com/marlonrichert/zsh-snap.git "$XDG_DATA_HOME/znap/znap"
 . "$XDG_DATA_HOME/znap/znap/znap.zsh"  # Start Znap
 
 # Prompt
 znap source romkatv/powerlevel10k
 
 # Completions
-znap install zsh-users/zsh-completions
+znap source zsh-users/zsh-completions
 
 # Keybindings
 znap source belak/zsh-utils editor
@@ -43,9 +44,9 @@ fi
 # 履歴ファイルに保存される履歴の件数
 export SAVEHIST=100000000
 # メモリに保存される履歴の件数
-export HISTSIZE=1000000
-# 履歴に即座に記録(読み込みはしない、`fc -R`で読み込み)
-setopt inc_append_history
+export HISTSIZE=10000000
+# 履歴に即座に記録、読み込み
+setopt share_history
 
 # Options
 # https://zsh.sourceforge.io/Doc/Release/Options.html
@@ -64,7 +65,7 @@ setopt mark_dirs
 setopt glob_complete
 
 # If a parameter name was completed and a following character (normally a space) automatically inserted, and the next character typed is one of those that have to come directly after the name (like ‘}’, ‘:’, etc.), the automatically added character is deleted, so that the character typed comes immediately after the parameter name. Completion in a brace expansion is affected similarly: the added character is a ‘,’, which will be removed if ‘}’ is typed next.
-setopt auto_param_keys
+# setopt auto_param_keys
 
 # If a parameter is completed whose content is the name of a directory, then add a trailing slash instead of a space.
 setopt auto_param_slash
@@ -80,3 +81,5 @@ bindkey -M modified "^I" complete-word
 bindkey -M modified '^[OA' history-substring-search-up
 bindkey -M modified '^[OB' history-substring-search-down
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.d/gui.zsh.
+[[ ! -f ~/.p10k.d/gui.zsh ]] || source ~/.p10k.d/gui.zsh
