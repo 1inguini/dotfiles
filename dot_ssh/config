@@ -10,6 +10,10 @@ Host basil.local
 	IdentityFile ~/.ssh/basil
 	User linguini
 
+Host bd795ise.local
+	IdentityFile ~/.ssh/BD795iSE
+	User hokaceri
+
 Host laptop linguini-laptop-ryzen.local
 	HostName linguini-laptop-ryzen.local
 	IdentityFile ~/.ssh/linguini-laptop-ryzen
