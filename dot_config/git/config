@@ -4,7 +4,7 @@
 
 [init]
 	defaultBranch = main
-	# templateDir = /home/hokaceri/.config/git/templates
+#	templateDir = /home/hokaceri/.config/git/templates
 
 # [url "git@github.com:"]
 #	InsteadOf = https://github.com/
@@ -24,5 +24,5 @@
 	allow = always
 [clone]
 	filterSubmodules = true
-[core]
-	# hooksPath = /home/hokaceri/.config/git/hooks
+[maintenance]
+	repo = /home/hokaceri/.local/share/git

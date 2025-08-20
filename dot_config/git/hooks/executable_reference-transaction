@@ -2,33 +2,46 @@
 set -e
 IFS='
 '
+. git-sh-setup
 SHARED_GIT_DIR=$XDG_DATA_HOME/git
 
 prepared() {
-    [ "$GIT_DIR" = "$SHARED_GIT_DIR" ] && return || true
-    while { IFS=' '; read -r _ new ref; } do
-        refname=$(printf '%s\n' "$ref" | cut -d/ -f2-)
-        namespace=refs/namespaces/$(echo "$GIT_DIR" | sed -E 's:/?\.git/?$::; s:^.*/::; s:[[:blank:]]:_:g')
-        if { echo "$new" | grep '^ref:'; } then
-            git -C "$SHARED_GIT_DIR" symbolic-ref "$namespace/$refname" "$namespace/$(echo "$new" | sed 's!^ref:refs/!!')"
-        else
-            git -C "$SHARED_GIT_DIR" update-ref "$namespace/$refname" "$new"
-        fi
-    done
+    # [ "$GIT_DIR" != "$SHARED_GIT_DIR" ] # do nothing when in $SHARED_GIT_DIR
+    # while { IFS=' '; read -r _ new ref; } do
+    #     refname=$(printf '%s\n' "$ref" | sed 's:^refs/::')
+    #     namespace=refs/namespaces/$(echo "$GIT_DIR" | sed -E 's:/?\.git/?$::; s:^.*/::; s:[[:blank:]]:_:g')
+    #     if { echo "$new" | grep '^ref:'; } then
+    #         git --git-dir="$SHARED_GIT_DIR" symbolic-ref "$namespace/$refname" "$namespace/$(echo "$new" | sed 's!^ref:refs/!!')"
+    #     else
+    #         git --git-dir="$SHARED_GIT_DIR" update-ref "$namespace/$refname" "$new"
+    #     fi
+    # done
     return
 }
 
 committed() {
-    return
+    echo "$GIT_DIR"
+    [ "$GIT_DIR" != "$SHARED_GIT_DIR" ] # do nothing when in $SHARED_GIT_DIR
+    while { IFS=' '; read -r old new ref; } do
+        echo $old $new $ref
+        refname=$(printf '%s\n' "$ref" | sed 's:^refs/::')
+        namespace=refs/namespaces/$(echo "$GIT_DIR" | sed -E 's:/?\.git/?$::; s:^.*/::; s:[[:blank:]]:_:g')
+        if [ 0000000000000000000000000000000000000000 = "$new" ]; then
+            srcref=
+        else
+            srcref=$ref
+        fi
+        git push -v "file://$SHARED_GIT_DIR" "$srcref:$namespace/$refname"
+    done
 }
 
 aborted() {
     return
 }
 
-case "$1" in
-    prepared) prepared;;
-    committed) committed;;
-    aborted) aborted;;
-esac
+# case "$1" in
+#     prepared) prepared;;
+#     committed) committed;;
+#     aborted) aborted;;
+# esac
 
