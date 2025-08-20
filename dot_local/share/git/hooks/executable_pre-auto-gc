@@ -1,0 +1,15 @@
+#!/bin/execlineb -P
+
+importas -Si HOME
+importas -S -D ${HOME}/.local/share XDG_DATA_HOME
+pipeline { find -O3 $HOME -xdev -name Trash -prune -o -name .Trash-* -prune -o ( -type f -name HEAD -o -type d -name refs -o -type d -name objects ) -printf "%h\n" }
+pipeline { sort } pipeline { uniq -cd } pipeline { grep "^[[:space:]]*3" } pipeline { sed "s:^[[:space:]]*3 ::" }
+backtick -E GIT_DIR { importas -Si GIT_DIR realpath $GIT_DIR }
+forstdin -E fullpath
+    if { [ ! $GIT_DIR = $fullpath ] }
+    backtick -E namespace {
+        pipeline { realpath --relative-to=$HOME $fullpath } git hash-object -w --stdin
+    }
+    # if { importas -Si GIT_DIR echo $GIT_DIR }
+    # git for-each-ref --omit-empty --format="%(if:equals=)%(symref)%(then)update refs/namespaces/${namespace}/%(refname:lstrip=1) %(objectname)%(end)"
+    git fetch -a --no-tags file://${fullpath} "refs/*:refs/namespaces/${namespace}/*"
