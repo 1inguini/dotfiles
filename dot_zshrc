@@ -2,6 +2,13 @@
 
 . "$HOME/.bashrc"
 
+function instant_prompt_reset_cursor() {
+  # reset cursor style (https://codeberg.org/dnkl/foot/issues/797#issuecomment-280449)
+  function prompt_reset_cursor() {
+      print -Pn "\e[ q"
+  }
+}
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -83,3 +90,5 @@ bindkey -M modified '^[OB' history-substring-search-down
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.d/gui.zsh.
 [[ ! -f ~/.p10k.d/gui.zsh ]] || source ~/.p10k.d/gui.zsh
+source ~/.cache/mill/download/mill-completion.sh # MILL_SOURCE_COMPLETION_LINE
+
