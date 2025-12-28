@@ -1,0 +1,13 @@
+[Service]
+ExecStart=/usr/bin/alacritty --daemon --socket=%t/Alacritty/Alacritty.sock -v
+RuntimeDirectory=Alacritty
+
+[Unit]
+Description=Alacritty terminal server mode
+Documentation=man:alacritty(1)
+PartOf=graphical-session.target
+After=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Install]
+WantedBy=graphical-session.target
